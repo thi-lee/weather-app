@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+    color: white;
+}
+
+html, body {
+    height: 100%;
+    background: #592067;
+    background: linear-gradient(to bottom, #592067 0%, #E7588D 100%, #5F283B 100%);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.blur {
+    /* .container text */
+    text-align:  center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    background: rgba(255, 255, 255, 0.0001);
+    backdrop-filter: blur(1.5px);
+
+    border-radius: 15px;
+    width: 600px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin-left: -300px;
+    margin-top: -200px;
+}
+
+.container {
+    background-image: url('img/sunset.jpg');
+    background-repeat:  no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+    width: 600px;
+    height: 400px;
+}
+
+/* .container background */
+.container {
+    /* .container position */
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin-left: -300px;
+    margin-top: -250px;
+}
+
+h3, p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.nav {
+    width: 100%;
+    padding: 10px;
+}
+
+.nav input[type=text] {
+    color: black;
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border-bottom: 1px solid #ccc;
+}
+
+.nav #search-location button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+    border:none;
+    cursor: pointer;
+}
+
+
+#search-location {
+    float: right;
+}
+
+.temperature {
+    font-size: 100px;
+}
+
+.location {
+    font-size: 50px;
+}
+

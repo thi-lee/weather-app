@@ -2,26 +2,27 @@
 <html>
     <head>
         <title>Weather app</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        
-        <form id="search-location">
-            <label for="city"></label>
-            <input type="text" placeholder="search for a city" id="city" name="city">
-
-            <!-- <input type="radio" id="fahrenheit" value="imperial" name="units">
-            <label for="fahrenheit">Fahrenheit</label>
-            
-            <input type="radio" id="celcius" value="metric" name="units">
-            <label for="celcius">Celcius</label> -->
-
-            <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
-        </form>
-        <img>
-
-        <div class="container"></div>
+        <div class="nav">
+            <form id="search-location">
+                <label for="city"></label>
+                <input type="text" placeholder="search for a city" id="city" name="city">
+    
+                <!-- <input type="radio" id="fahrenheit" value="imperial" name="units">
+                <label for="fahrenheit">Fahrenheit</label>
+                
+                <input type="radio" id="celcius" value="metric" name="units">
+                <label for="celcius">Celcius</label> -->
+    
+                <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <div class="container">
+            <div class="blur"></div>
+        </div>
         <script src="./script.js"></script>
     </body>
 </html>
