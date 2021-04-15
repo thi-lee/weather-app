@@ -41,6 +41,8 @@ body {
     position: absolute;
     margin-left: -300px;
     margin-top: -200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .container {
@@ -65,18 +67,22 @@ body {
 .main {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 50px;
-    padding-left: 10px;
+    padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+.left-main {
+    text-align: left;
 }
 
 .add-info {
     width: 100%;
 }
 
-h3, p {
+p {
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -87,11 +93,19 @@ h3, p {
 }
 
 .search input[type=text] {
-    color: black;
+    color: white;
     padding: 6px;
     margin-top: 8px;
     font-size: 17px;
-    border-bottom: 1px solid #ccc;
+    background-color: rgb(255, 255, 255, 0);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid rgb(255, 255, 255, 0.5);
+}
+
+::placeholder {
+    color: white;
 }
 
 .search #search-location button {
@@ -100,10 +114,11 @@ h3, p {
     margin-top: 8px;
     margin-right: 16px;
     font-size: 17px;
-    border:none;
+    border: none;
     cursor: pointer;
+    background-color: rgb(255, 255, 255, 0);
+    border-bottom: 3px solid rgb(255, 255, 255, 0.5);
 }
-
 
 #search-location {
     float: right;
@@ -117,6 +132,19 @@ h3, p {
     font-size: 50px;
 }
 
+.min-max {
+    font-size: 30px;
+}
+
+.add-info {
+    background: rgba(255, 255, 255, 0.3);
+    height: 30%;
+}
+
+.nav {
+    padding-top: 5px;
+}
+
 ul {
     margin-top: 0px;
     margin-bottom: 0px;
@@ -125,13 +153,15 @@ ul {
     display: flex;
     flex-direction: row;
     justify-content: start;
-    border-bottom: 2px solid rgba(255, 255, 255, .3);
+    
     font-weight: 15px;
 }
 
 li { 
     color: rgba(255, 255, 255, .3);
-    padding-right: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, .3);
 }
 
 li:hover {
@@ -141,5 +171,24 @@ li:hover {
 
 li:active {
     color: black;
+}
+
+.highlighted {
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.display-add-info {
+    height: 500px;
+}
+
+.condition {
+    padding-left: 0px;
+    font: 15px bold 'Open-Sans';
+}
+
+.wi {
+    padding-top: 20px;
+    font-size: 50px;
 }
 

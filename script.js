@@ -13,23 +13,45 @@ const unitDefault = 'metric';
 const searchButton = document.querySelector('#search-button');
 const searchForm = document.querySelector('#search-location');
 
-// const img = document.querySelector('img');
-// img.style.width = '500px';
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    searchCity();
+})
 
-const main = document.createElement('div')
-container.appendChild(main).classList.add('main');
+const main = document.querySelector('.main');
+const leftMain = document.querySelector('.left-main');
+const rightMain = document.querySelector('.right-main');
 
-const myH3 = document.createElement('h3');
-const temperature = document.createElement('p');
-
-const feelsLike = document.createElement('p');
+const myH3 = document.createElement('p');
+const date = document.createElement('p');
+const mainIcon = document.createElement('p');
 const condition = document.createElement('p');
-const humidity = document.createElement('p');
+
+const temperature = document.createElement('p');
+const minMax = document.createElement('p');
+
+leftMain.appendChild(myH3).classList.add('location');
+leftMain.appendChild(date).classList.add('date');
+leftMain.appendChild(mainIcon).classList.add('main-icon');
+leftMain.appendChild(condition).classList.add('condition');
+
+rightMain.appendChild(temperature).classList.add('temperature');
+rightMain.appendChild(minMax).classList.add('min-max');
+
+const addInfo = document.createElement('span');
+container.appendChild(addInfo).classList.add('add-info');
+const nav = document.createElement('nav');
+const navList = document.createElement('ul');
+nav.appendChild(navList);
 
 let city = defaultCity;
 let units = unitDefault;
+let d = new Date();
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+date.innerHTML = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+mainIcon.innerHTML = '<i class="wi wi-cloudy"></i>';
 getInfo();
-addInfo();
+infoSpan();
 
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -37,7 +59,6 @@ searchForm.addEventListener('submit', (e) => {
 })
 
 function searchCity() {
-    // units = document.querySelector("input[name='units']:checked").value;
     city = citySearch.value;
     getInfo();
 }
@@ -49,40 +70,36 @@ async function getInfo() {
 
     myH3.textContent = weatherData.name;
     temperature.textContent = `${Math.round(weatherData.main.temp)}º`;
-    // const gifCondition = weatherData['weather'][0]['description'];
-    // condition.textContent = `Condition: ${gifCondition}`;
-    // feelsLike.textContent = `Feels like: ${weatherData.main.feels_like}`;
-    // humidity.textContent = `Humidity: ${weatherData.main.humidity}`;
+    condition.textContent = `${weatherData['weather'][0]['description']}`;
+    condition.style.textTransform = 'capitalize';
+
+    minMax.textContent = `${Math.round(weatherData.main.temp_min)}º / ${Math.round(weatherData.main.temp_max)}º`;
 }
 
-main.appendChild(myH3).classList.add('location');
-main.appendChild(temperature).classList.add('temperature');
-
-function addInfo() {
-    const addInfo = document.createElement('span');
-    container.appendChild(addInfo).classList.add('add-info');
-
-    const nav = document.createElement('nav');
-    const navList = document.createElement('ul');
-    nav.appendChild(navList);
-    const tabs = ["Hourly", "Daily", "Details", "Precipitation"];
-    for (i = 0; i < tabs.length; i++) {
-        const navTab = document.createElement('li');
-        navTab.textContent = tabs[i];
-        navList.appendChild(navTab);
-    }
-    addInfo.appendChild(nav).classList.add('nav');
-
-    // addInfo.appendChild(condition).classList.add('condition');
-    // addInfo.appendChild(feelsLike).classList.add('feels-like');
-    // addInfo.appendChild(humidity).classList.add('humidity');
+function infoSpan() {
+    addInfo.innerHTML = (
+        `<ul class="nav"><li>Hourly</li>
+        <li>Daily</li>
+        <li>Details</li>
+        <li>Precipitation</li></ul>`
+    )
+    displayAddInfo();
 }
-
-// when <li></li> is clicked, display click style
-// display additional info 
 
 function displayAddInfo() {
     const displayInfo = document.createElement('span');
-    displayInfo.textContent = 'Hello';
-    addInfo.appendChild(displayInfo);
+    addInfo.appendChild(displayInfo).classList.add('display-add-info');
 }
+
+const navTabs = document.querySelectorAll('li');
+navTabs.forEach(function(nav) {
+    nav.addEventListener('click', function() {
+        if (nav.classList != 'highlighted') { 
+            if (document.querySelector('.highlighted') != null) {
+                document.querySelector('.highlighted').classList.remove('highlighted');
+            }
+            nav.classList.add('highlighted');
+        }
+        nav.classList.add('highlighted');
+    })
+});
