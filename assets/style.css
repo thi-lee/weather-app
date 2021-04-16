@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+    color: white;
+}
+
+html, body {
+    height: 100%;
+    background: #592067;
+    background: -moz-linear-gradient(top, #592067 0%, #FD9CA5 100%);
+    background: -webkit-linear-gradient(top, #592067 0%, #FD9CA5 100%);
+    background: linear-gradient(to bottom, #592067 0%, #FD9CA5 100%);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.blur {
+    /* .container text */
+    text-align:  center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    background: rgba(255, 255, 255, 0.0001);
+    backdrop-filter: blur(1.5px);
+
+    border-radius: 15px;
+    width: 600px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin-left: -300px;
+    margin-top: -200px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container {
+    background-image: url('img/sunset.jpg');
+    background-repeat:  no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+    width: 600px;
+    height: 400px;
+}
+
+/* .container background */
+.container {
+    /* .container position */
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin-left: -300px;
+    margin-top: -250px;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+.left-main {
+    text-align: left;
+}
+
+.add-info {
+    width: 100%;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.search {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.search input[type=text] {
+    color: white;
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    background-color: rgb(255, 255, 255, 0);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid rgb(255, 255, 255, 0.5);
+    outline: none;
+}
+
+::placeholder {
+    color: white;
+}
+
+.search #search-location button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255, 0);
+    border-bottom: 3px solid rgb(255, 255, 255, 0.5);
+    outline: none;
+}
+
+.search #search-location button:hover, .search input[type=text]:hover {
+    border-bottom: 3px solid rgb(255, 255, 255, 1);
+    cursor: pointer;
+}
+
+#search-location {
+    display: flex;
+    justify-content: flex-end;
+    float: right;
+}
+
+.search-error {
+    display: flex;
+    justify-content: flex-end;
+    float: right;
+    padding-right: 10px;
+}
+
+.temperature {
+    font-size: 100px;
+}
+
+.location {
+    font-size: 50px;
+}
+
+.min-max {
+    font-size: 30px;
+}
+
+.add-info {
+    background: rgba(255, 255, 255, 0.3);
+    height: 30%;
+}
+
+.nav {
+    padding-top: 5px;
+}
+
+ul {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    
+    font-weight: 15px;
+}
+
+li { 
+    color: rgba(255, 255, 255, .3);
+    padding-right: 10px;
+    padding-left: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, .3);
+}
+
+li:hover {
+    cursor: pointer;
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+li:active {
+    color: black;
+}
+
+.highlighted {
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.display-add-info {
+    height: 500px;
+}
+
+.condition {
+    padding-left: 0px;
+    font: 15px bold 'Open-Sans';
+}
+
+.wi {
+    padding-top: 20px;
+    font-size: 50px;
+}
+
