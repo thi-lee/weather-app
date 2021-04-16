@@ -90,6 +90,8 @@ p {
 .search {
     width: 100%;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .search input[type=text] {
@@ -102,6 +104,7 @@ p {
     border-left: none;
     border-right: none;
     border-bottom: 3px solid rgb(255, 255, 255, 0.5);
+    outline: none;
 }
 
 ::placeholder {
@@ -118,10 +121,25 @@ p {
     cursor: pointer;
     background-color: rgb(255, 255, 255, 0);
     border-bottom: 3px solid rgb(255, 255, 255, 0.5);
+    outline: none;
+}
+
+.search #search-location button:hover, .search input[type=text]:hover {
+    border-bottom: 3px solid rgb(255, 255, 255, 1);
+    cursor: pointer;
 }
 
 #search-location {
+    display: flex;
+    justify-content: flex-end;
     float: right;
+}
+
+.search-error {
+    display: flex;
+    justify-content: flex-end;
+    float: right;
+    padding-right: 10px;
 }
 
 .temperature {
@@ -167,6 +185,7 @@ li {
 li:hover {
     cursor: pointer;
     color: white;
+    border-bottom: 2px solid white;
 }
 
 li:active {

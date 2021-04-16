@@ -13,11 +13,6 @@ const unitDefault = 'metric';
 const searchButton = document.querySelector('#search-button');
 const searchForm = document.querySelector('#search-location');
 
-searchForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    searchCity();
-})
-
 const main = document.querySelector('.main');
 const leftMain = document.querySelector('.left-main');
 const rightMain = document.querySelector('.right-main');
@@ -55,35 +50,39 @@ infoSpan();
 
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    searchCity();
-})
-
-function searchCity() {
     city = citySearch.value;
     getInfo();
-}
+})
 
 async function getInfo() {
     const obj = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=e551943d6614afa1f2055c3d16f2e930`, {mode: 'cors'});
-    const weatherData = await obj.json();
-    console.log(weatherData);
+    if (obj.status != 404) {
+        const weatherData = await obj.json();
+        console.log(weatherData);
 
-    myH3.textContent = weatherData.name;
-    temperature.textContent = `${Math.round(weatherData.main.temp)}º`;
-    condition.textContent = `${weatherData['weather'][0]['description']}`;
-    condition.style.textTransform = 'capitalize';
+        myH3.textContent = weatherData.name ;
+        temperature.textContent = `${Math.round(weatherData.main.temp)}º`;
+        condition.textContent = `${weatherData['weather'][0]['description']}`;
+        condition.style.textTransform = 'capitalize';
 
-    minMax.textContent = `${Math.round(weatherData.main.temp_min)}º / ${Math.round(weatherData.main.temp_max)}º`;
+        minMax.textContent = `${Math.round(weatherData.main.temp_min)}º / ${Math.round(weatherData.main.temp_max)}º`;
+    } else {
+        const notFound = document.querySelector('.search-error')
+        notFound.textContent = 'No city match. Please try again!';
+    }
+
+    return {};
 }
 
 function infoSpan() {
     addInfo.innerHTML = (
-        `<ul class="nav"><li>Hourly</li>
-        <li>Daily</li>
-        <li>Details</li>
-        <li>Precipitation</li></ul>`
+        `<ul class="nav">
+            <li class="default" value="feels_like">Feels like</li>
+            <li value="humidity">Humidity</li>
+            <li value="pressure">Pressure</li>
+            <li value="precipitation">Precipitation</li>
+        </ul>`
     )
-    displayAddInfo();
 }
 
 function displayAddInfo() {
@@ -93,6 +92,10 @@ function displayAddInfo() {
 
 const navTabs = document.querySelectorAll('li');
 navTabs.forEach(function(nav) {
+    if (document.querySelector('.highlighted') === null) {
+        console.log('hello');
+        document.querySelector('.default').classList.add('highlighted');
+    }
     nav.addEventListener('click', function() {
         if (nav.classList != 'highlighted') { 
             if (document.querySelector('.highlighted') != null) {
@@ -101,5 +104,6 @@ navTabs.forEach(function(nav) {
             nav.classList.add('highlighted');
         }
         nav.classList.add('highlighted');
+        displayAddInfo();
     })
 });
